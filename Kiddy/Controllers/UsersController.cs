@@ -110,7 +110,7 @@ namespace Kiddy.Controllers
         public BaseResponse Put([FromBody]UserUpdate usersUpdate)
         {
             BaseResponse baseResponse = new BaseResponse();
-            List<User> checkUser = db.Users.Where(x => x.UserID == userRegister.UserID && x.RowStatus != true).ToList();
+            List<User> checkUser = db.Users.Where(x => x.UserID == usersUpdate.UserID && x.RowStatus != true).ToList();
             if (checkUser.Count() > 0)
             {
                 if (!bC.validateToken(usersUpdate.userToken, usersUpdate.UserLogin))
