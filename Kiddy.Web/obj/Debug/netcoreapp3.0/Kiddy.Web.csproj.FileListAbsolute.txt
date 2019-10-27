@@ -162,3 +162,7 @@ Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Kiddy.Web.MvcApplicationPartsAss
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\Flee.NetStandard20.dll
 Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\Home\SignUp.cshtml.g.cs
 Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\User\Index.cshtml.g.cs
+Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\User\shapeSavedList.cshtml.g.cs
+Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\User\submitShapes.cshtml.g.cs
+Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Index.cshtml.g.cs
+Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Details.cshtml.g.cs

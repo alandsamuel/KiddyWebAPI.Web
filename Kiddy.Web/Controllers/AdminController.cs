@@ -12,17 +12,19 @@ namespace Kiddy.Web.Controllers
         // GET: Admin
         public virtual ActionResult Index()
         {
+            //list all shapes
             return View();
         }
 
         // GET: Admin/Details/5
         public virtual ActionResult Details(int id)
         {
+            //shapes detail (edit?)
             return View();
         }
 
         // GET: Admin/Create
-        public virtual ActionResult Create()
+        public virtual ActionResult CreateAdmin()
         {
             return View();
         }
@@ -30,7 +32,7 @@ namespace Kiddy.Web.Controllers
         // POST: Admin/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(IFormCollection collection)
+        public virtual ActionResult CreateAdmin(IFormCollection collection)
         {
             try
             {
@@ -44,50 +46,5 @@ namespace Kiddy.Web.Controllers
             }
         }
 
-        // GET: Admin/Edit/5
-        public virtual ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Delete/5
-        public virtual ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
