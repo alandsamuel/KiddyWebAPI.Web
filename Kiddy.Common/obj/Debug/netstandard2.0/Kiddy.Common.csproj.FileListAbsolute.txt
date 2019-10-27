@@ -1,0 +1,8 @@
+Z:\Project\C#\Kiddy.Common\bin\Debug\netstandard2.0\Kiddy.Common.deps.json
+Z:\Project\C#\Kiddy.Common\bin\Debug\netstandard2.0\Kiddy.Common.dll
+Z:\Project\C#\Kiddy.Common\bin\Debug\netstandard2.0\Kiddy.Common.pdb
+Z:\Project\C#\Kiddy.Common\obj\Debug\netstandard2.0\Kiddy.Common.AssemblyInfoInputs.cache
+Z:\Project\C#\Kiddy.Common\obj\Debug\netstandard2.0\Kiddy.Common.AssemblyInfo.cs
+Z:\Project\C#\Kiddy.Common\obj\Debug\netstandard2.0\Kiddy.Common.dll
+Z:\Project\C#\Kiddy.Common\obj\Debug\netstandard2.0\Kiddy.Common.pdb
+Z:\Project\C#\Kiddy.Common\obj\Debug\netstandard2.0\Kiddy.Common.csprojAssemblyReference.cache

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KiddyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="10" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="RowStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="Shapes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="shapeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Dimension" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="RowStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tokens">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessToken" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="UsersID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="RowStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="isMaster" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="RowStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersInRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsersID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="10" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="RowStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UsersID_UsersInRoleUsersID">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UsersInRole" Type="Self.UsersInRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersInRole">
+        <PropertyRef Name="UsersID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersInRoleRoleID_RoleID">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UsersInRole" Type="Self.UsersInRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersInRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KiddyModelStoreContainer">
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shapes" EntityType="Self.Shapes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersInRole" EntityType="Self.UsersInRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_UsersID_UsersInRoleUsersID" Association="Self.FK_UsersID_UsersInRoleUsersID">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersInRole" EntitySet="UsersInRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersInRoleRoleID_RoleID" Association="Self.FK_UsersInRoleRoleID_RoleID">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UsersInRole" EntitySet="UsersInRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

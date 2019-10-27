@@ -1,0 +1,35 @@
+﻿@using Kiddy.Models;
+@using System.Web;
+
+@model UsersLogin
+
+@{
+    ViewData["Title"] = "Home Page";
+    string error = ViewBag.error ?? string.Empty;
+}
+
+    <div class="div-login">
+        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(m => m.UserID, new { @placeholder = "Username" });
+            @Html.PasswordFor(m => m.password, new { @placeholder = "Password" });
+
+            <div class="login-btn">
+
+                <a href="#" class="link-forgotPassword">Forgot Password</a>
+                <input type="submit" name="red-submit" value="Login" />
+
+            </div>
+
+            @Html.ValidationSummary(false, string.Empty, new { style = "color:red" });
+        }
+
+    </div>
+
+    <script>
+        if ('@error' != '')
+        {
+            confirm_dialog('@error', 'Error', '', null);
+        }
+    </script>
