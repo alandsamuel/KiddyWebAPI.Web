@@ -1,0 +1,43 @@
+﻿@using Kiddy.Models;
+@using System.Web;
+
+@model UsersRegister
+
+@{
+    ViewData["Title"] = "Registration Page";
+    string error = ViewBag.error ?? string.Empty;
+    string statusCode = ViewBag.StatusCode ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
+}
+
+    <div class="div-login">
+        <br /><h2>Sign Up</h2><br />
+        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(m => m.UserID, new { @placeholder = "Username" });
+            @Html.PasswordFor(m => m.password, new { @placeholder = "Password" });
+            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email" })
+
+            <div class="login-btn">
+
+                <input type="submit" name="red-submit" value="Login" />
+
+            </div>
+
+            @Html.ValidationSummary(false, string.Empty, new { style = "color:red" });
+        }
+
+    </div>
+
+<script>
+        if ('@error' != '')
+        {
+            confirm_dialog('@error', 'Error', '', null);
+        }
+        if('@statusCode' != @string.Empty){
+            alert(@message);
+        }
+
+
+</script>

@@ -13,6 +13,7 @@
     <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
     <Property Name="RowStatus" Type="Boolean" Nullable="false" />
+    <Property Name="needParameter" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -44,6 +45,7 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UsersInRole" EntitySet="UsersInRoles" />
     </AssociationSet>
+    <EntitySet Name="UsersShapeDownloads" EntityType="KiddyModel.UsersShapeDownload" />
   </EntityContainer>
   <EntityType Name="Token">
     <Key>
@@ -108,4 +110,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="UsersShapeDownload">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShapesID" Type="Int32" Nullable="false" />
+    <Property Name="UsersID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RowStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

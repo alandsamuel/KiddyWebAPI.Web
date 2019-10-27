@@ -1,0 +1,381 @@
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+/* Table of Content
+==================================================
+	#Site Styles
+	#Page Styles
+	#Media Queries
+	#Font-Face */
+
+/* #Site Styles
+================================================== */
+
+/* #Page Styles
+================================================== */
+
+/* #Media Queries
+================================================== */
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (max-width: 959px) {
+		
+		.container,
+		footer .div-footer
+		{
+			width: 90%;
+		}
+		
+		header .site-title,
+		.home-table th,
+		.home-table td,
+		.div-login .login-btn .link-forgotPassword
+		{
+			font-size: 14pt;
+		}		
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		textarea,
+		select
+		{
+			font-size: 12pt;
+		}
+		input[type="submit"].red-submit,
+		footer .div-footer span		
+		{
+			font-size: 11pt;
+		}
+		.home-slide-title h2
+		{
+			font-size: 20pt;
+		}
+		
+		header .link-logo img {
+			width: 30%;
+		}
+		
+		h1.page-title {
+			font-size: 18pt;
+		}
+		
+		header .link-logo img {
+			width: 200px;
+			margin-top: 5px;
+		}
+		
+		.div-float-menu .div-menu h3 {
+			font-size: 20pt;
+		}
+		
+		.div-float-menu .div-menu div h3 {
+			font-size: 11pt;
+		}
+		
+		.div-float-menu .div-menu a.child, .div-float-menu .div-menu a.child:visited {
+			font-size: 11pt;
+		}
+		
+		.div-float-menu .ui-accordion .ui-accordion-content {
+			width: 90%;
+		}
+		
+		.form-wrap .form-row {
+			width: 46%;
+			margin: 0 2% 10px 2%;	
+		}
+		
+		.form-wrap .form-row .form-label {
+			width: 35%;	
+		}
+		
+		.form-wrap .form-row .form-input {
+			width: 63%;
+		}
+		
+		.form-wrap .form-row .filter-order-date {
+			width: 64%;
+		}
+		
+		.luv {
+			margin-left: 0px;
+		}
+		
+		.form-wrap .form-row .filter-order-no input.ipt-def-search, .form-wrap .form-row .filter-order-date input.ipt-def-cal {
+			width: 33%;
+			font-size: 12px;
+			height: 13px;
+		}
+		
+		.filter-order-no span, .filter-order-date span {
+			width: 7%;
+			margin: 0px 2%;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+	}
+
+	/* Tablet Portrait size to standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		
+		.container,
+		footer .div-footer
+		{
+			width: 90%;
+		}
+		header .site-title,
+		.home-table th,
+		.home-table td,
+		.div-login .login-btn .link-forgotPassword
+		{
+			font-size: 10pt;
+		}		
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		textarea,
+		select
+		{
+			font-size: 10pt;
+		}
+		input[type="submit"].red-submit,
+		footer .div-footer span				
+		{
+			font-size: 9pt;
+		}
+		.home-slide-title h2
+		{
+			font-size: 14pt;
+		}
+		.div-user .user-nav
+		{
+			display: none;
+		}
+		.div-user .user-nav-mobile
+		{
+			display: block;
+		}
+	}
+
+	/* All Mobile Sizes (devices and browser) */
+	@media only screen and (max-width: 767px) {
+		
+		.container,
+		footer .div-footer
+		{
+			width: 90%;
+		}
+		header .site-title,
+		.home-table th,
+		.home-table td,
+		.div-login .login-btn .link-forgotPassword
+		{
+			font-size: 12pt;
+		}		
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		textarea,
+		select
+		{
+			font-size: 10pt;
+		}
+		input[type="submit"].red-submit,
+		footer .div-footer span				
+		{
+			font-size: 9pt;
+		}
+		.home-slide-title h2
+		{
+			font-size: 14pt;
+		}
+		.div-user .user-nav
+		{
+			display: none;
+		}
+		.div-user .user-nav-mobile
+		{
+			display: block;
+		}
+		
+		h1.page-title {
+			font-size: 16pt;
+		}
+		
+		header .link-logo img {
+			width: 170px;
+			margin-top: 5px;
+		}
+		
+		.form-wrap .form-row .form-input {
+			width: 56%
+		}
+	}
+
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		
+		.container,
+		footer .div-footer
+		{
+			width: 90%;
+		}
+		header .site-title,
+		.home-table th,
+		.home-table td,
+		.div-login .login-btn .link-forgotPassword
+		{
+			font-size: 9pt;
+		}		
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		textarea,
+		select
+		{
+			font-size: 7pt;
+		}
+		input[type="submit"].red-submit,
+		footer .div-footer span				
+		{
+			font-size: 7pt;
+		}
+		.home-slide-title h2
+		{
+			font-size: 8pt;
+		}
+		.div-user .user-nav
+		{
+			display: none;
+		}
+		.div-user .user-nav-mobile
+		{
+			display: block;
+		}
+		
+		header .link-logo img {
+			width: 170px;
+			margin-top: 5px;
+		}
+		
+		.luv {
+			margin-left: 0px;
+			width: 20px; height: 20px;
+		}
+	}
+
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {
+		
+		.container,
+		footer .div-footer
+		{
+			width: 90%;
+		}
+		header .site-title,
+		.home-table th,
+		.home-table td,
+		.div-login .login-btn .link-forgotPassword
+		{
+			font-size: 9pt;
+		}		
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		textarea,
+		select
+		{
+			font-size: 7pt;
+		}
+		input[type="submit"].red-submit,
+		footer .div-footer span				
+		{
+			font-size: 7pt;
+		}
+		.home-slide-title h2
+		{
+			font-size: 7pt;
+		}
+		.div-user .user-nav
+		{
+			display: none;
+		}
+		.div-user .user-nav-mobile
+		{
+			display: block;
+		}
+		
+		h1.page-title {
+			font-size: 14pt;
+		}
+		
+		header .link-logo img {
+			width: 150px;
+			margin-top: 13px;
+		}
+		
+		.div-float-menu .div-menu h3 {
+			font-size: 18pt;
+		}
+		
+		.div-float-menu .div-menu div h3 {
+			font-size: 10pt;
+		}
+		
+		.div-float-menu .div-menu a.child, .div-float-menu .div-menu a.child:visited {
+			font-size: 9pt;
+		}
+		
+		.div-float-menu .ui-accordion .ui-accordion-header span {
+			width: 30px;
+			height: 30px;
+			top: 26%;
+		}
+		
+		.div-float-menu .div-menu h3.menu-general span {
+			width: 15px;
+			height: 23px;	
+		}
+		
+		.div-float-menu {
+			width: 340px;	
+		}
+		
+		.div-float-menu .ui-accordion .ui-accordion-content {
+			width: 270px;
+		}
+		
+		.div-float-menu .div-menu h3.parent {
+			width: 70%;
+			padding-bottom: 12px;
+		}
+		
+		.div-float-menu .div-menu div h3 {
+				
+		}
+	}
+
+
+/* #Font-Face
+================================================== */
+/* 	This is the proper syntax for an @font-face file
+		Just create a "fonts" folder at the root,
+		copy your FontName into code below and remove
+		comment brackets */
+
+/*	@font-face {
+	    font-family: 'FontName';
+	    src: url('../fonts/FontName.eot');
+	    src: url('../fonts/FontName.eot?iefix') format('eot'),
+	         url('../fonts/FontName.woff') format('woff'),
+	         url('../fonts/FontName.ttf') format('truetype'),
+	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
+	    font-weight: normal;
+	    font-style: normal; }
+*/

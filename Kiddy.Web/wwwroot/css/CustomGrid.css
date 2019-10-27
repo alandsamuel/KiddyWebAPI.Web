@@ -1,0 +1,136 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 1) DataTable Example 1
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+table.datatable { border: 0; margin-bottom: 2em; border-collapse: collapse;  width: 100%;}
+	
+	table.datatable td, table.datatable th { border-bottom: 1px solid #DDD; vertical-align: top; padding: 5px 10px;} 
+	
+	table.datatable thead th { background-color: #333 !important; white-space: nowrap; color: #FFF; border-top: 1px solid #ccc; font-size: 13px; font-weight: bold; text-align: left;}	
+		
+	table.datatable tbody td { background-color: #FFF; font-size: 13px; }    
+		
+	table.datatable tr.even td { background-color: #F9F9F9; }
+	table.datatable tr.odd td { background-color: #fff; }
+	table.datatable tr.group td { background-color: #ddd; color: #000; font-weight:bold; }
+	
+	table.datatable tbody tr:hover td { background-color: #F5FAFA !important; }
+	
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * 2) DataTables sorting
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+    table.datatable .sorting_asc a, 
+    table.datatable .sorting_desc a, 
+    table.datatable .sorting a {color: White;}
+    table.datatable .sorting_asc a:hover, 
+    table.datatable .sorting_desc a:hover, 
+    table.datatable .sorting a:hover {color: #eee;}
+
+    table.datatable .sorting_asc { background: url(images/sort_asc.png) no-repeat center right;	padding-right:22px!important; }
+
+    table.datatable .sorting_desc { background: url(images/sort_desc.png) no-repeat center right; padding-right:22px!important; }
+
+    table.datatable .sorting { background: url(images/sort_both.png) no-repeat center right; padding-right:22px!important; }
+
+    table.datatable .sorting_left { text-align:left!important; width:50px}
+    table.datatable .sorting_right { text-align:right!important; }
+    table.datatable .sorting_center { text-align:center!important; }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * 3) DataTables filter
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    table.datatable .h_filter { background-color:#eee; white-space: nowrap;}
+    table.datatable .h_filter input, 
+    table.datatable .h_filter select {padding: 3px!important; min-width:70px; width: 80px; font-size: 13px; color: #333; border: 1px solid #ccc;}
+    table.datatable .h_filter .datef {width: 70px!important;}
+    table.datatable .h_filter .h_text {vertical-align:bottom; margin: 3px; cursor: pointer; background: url(images/search.png) no-repeat center right; display:inline-block; width: 17px; height:18px;}
+    table.datatable .nowrap {white-space: nowrap;}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 1) DataTable Example 2
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+table.datatable2 { border: 0; margin-bottom: 2em; border-collapse: collapse;  width: 100%;}
+	
+	table.datatable2 td, table.datatable2 th { border: 1px solid #DDD; vertical-align: top; padding: 5px 10px;} 
+	
+	table.datatable2 thead th { background-color: #004775!important; white-space: nowrap; color: #000; border-top: 1px solid #ccc; font-size: 13px; font-weight: bold; text-align: left;}	
+		
+	table.datatable2 tbody td { background-color: #d5d5e5; font-size: 13px; }    
+		
+	table.datatable2 tr.even td { background-color: #60759e; color: White;}
+	table.datatable2 tr.odd td { background-color: #d5d5e5; }
+	table.datatable2 tr.group td { background-color: #ddd; color: #000; font-weight:bold; }
+	
+	table.datatable2 tbody tr:hover td { background-color: #eee !important; color: #000; }	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * 2) DataTables2 sorting
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+    table.datatable2 .sorting_asc a, 
+    table.datatable2 .sorting_desc a, 
+    table.datatable2 .sorting a {color: yellow;}
+    table.datatable2 .sorting_asc a:hover, 
+    table.datatable2 .sorting_desc a:hover, 
+    table.datatable2 .sorting a:hover {color: yellow;}
+
+    table.datatable2 .sorting_asc { background: url(images/sort_asc.png) no-repeat center right;	padding-right:22px!important; }
+
+    table.datatable2 .sorting_desc { background: url(images/sort_desc.png) no-repeat center right; padding-right:22px!important; }
+
+    table.datatable2 .sorting { background: url(images/sort_both.png) no-repeat center right; padding-right:22px!important; }
+
+    table.datatable2 .sorting_left { text-align:left!important; }
+    table.datatable2 .sorting_right { text-align:right!important; }
+    table.datatable2 .sorting_center { text-align:center!important; }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * 3) DataTables2 filter
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    table.datatable2 .h_filter { background-color:#fff; color:#000; white-space: nowrap;}
+    table.datatable2 .h_filter input, 
+    table.datatable2 .h_filter select {padding: 3px!important; min-width:70px; width: 75%; font-size: 13px;color: #333; border: 1px solid #ccc;}
+    table.datatable2 .h_filter .datef {width: 70px!important;}
+    table.datatable2 .h_filter .h_text {vertical-align:bottom; margin: 3px; cursor: pointer; background: url(images/search.png) no-repeat center right; display:inline-block; width: 17px;}
+    table.datatable2 .nowrap {white-space: nowrap;} 
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 5) DataTable Context Menu
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */	
+.contextMenu { position: absolute; width: 240px; z-index: 99999; border: solid 1px #CCC; background: #EEE; padding: 0px; margin: 0px; display: none; font-size: 13px;}
+
+    .contextMenu li { list-style: none; padding: 0px; margin: 0px; }
+    .contextMenu a{ color: #333; text-decoration: none; display: block; line-height: 20px; height: 20px; background-position: 6px center; background-repeat: no-repeat; outline: none; padding: 1px 5px; padding-left: 28px; font-size: 13px; }
+
+    .contextMenu li.hover a { color: #FFF; background-color: #3399FF; }
+    .contextMenu li.disabled a { color: #AAA; cursor: default; }
+    .contextMenu li.hover.disabled a { background-color: transparent; }
+    .contextMenu li.separator { border-top: solid 1px #CCC; }
+    .contextMenu li a.selected { background-image: url(images/ok.png); }
+ 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 4) Paging Example 1
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */	
+.pager { width:100%; display:block; margin: 10px; font-size: 13px;}
+    .pager .page_size {float: left; width: 150px;}
+        .pager .page_size select {font-size: 13px;}
+
+    .pager .page_scroller_container {float: left; width: 300px; margin-left: 20px;}
+        .pager .page_scroller_container .leftbtn, 
+        .pager .page_scroller_container .rightbtn { height: 19px; width: 19px; float: left; cursor: pointer;}        
+        .pager .page_scroller_container .leftbtn { margin-right: 8px; background-image: url(images/back_enabled.png); } 
+        .pager .page_scroller_container .rightbtn { margin-left: 9px; background-image: url(images/forward_enabled.png); }
+        .pager .page_scroller_container .scroller { float: left; width: 245px; margin:3px 0;}
+
+    .pager .page_numbers_container {float: left; width: 300px; margin-left: 20px;}        
+        .pager .page_numbers_container a,
+        .pager .page_numbers_container b { margin: 2px; height: 20px; cursor: pointer; text-decoration:none; float:left; line-height:14px;}        
+        .pager .page_numbers_container a.first { background: url(images/first.png) no-repeat; width: 16px; } 
+        .pager .page_numbers_container a.last { background: url(images/last.png) no-repeat; width: 16px; }
+        .pager .page_numbers_container a.next { background: url(images/next.png) no-repeat; width: 16px; } 
+        .pager .page_numbers_container a.previous { background: url(images/previous.png) no-repeat; width: 16px; } 
+        
+    .pager .pages {float: left; width: 150px; margin-left: 20px;}
+    .pager .items {float: left; width: 200px; margin-left: 20px;}

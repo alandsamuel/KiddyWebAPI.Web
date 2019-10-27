@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Shapes">
       <EntityTypeMapping TypeName="KiddyModel.Shape">
         <MappingFragment StoreEntitySet="Shapes">
+          <ScalarProperty Name="needParameter" ColumnName="needParameter" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="shapeName" ColumnName="shapeName" />
           <ScalarProperty Name="Dimension" ColumnName="Dimension" />
@@ -67,6 +68,20 @@
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersShapeDownloads">
+      <EntityTypeMapping TypeName="KiddyModel.UsersShapeDownload">
+        <MappingFragment StoreEntitySet="UsersShapeDownload">
+          <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+          <ScalarProperty Name="ShapesID" ColumnName="ShapesID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

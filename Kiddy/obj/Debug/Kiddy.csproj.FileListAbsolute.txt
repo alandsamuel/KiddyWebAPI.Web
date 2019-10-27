@@ -86,3 +86,4 @@ Z:\Project\C#\Kiddy\obj\Debug\Kiddy.csproj.CopyComplete
 Z:\Project\C#\Kiddy\obj\Debug\Kiddy.dll
 Z:\Project\C#\Kiddy\obj\Debug\Kiddy.pdb
 Z:\Project\C#\Kiddy\bin\XmlDocument.xml
+Z:\Project\C#\Kiddy\bin\Flee.Net45.dll

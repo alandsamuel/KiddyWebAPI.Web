@@ -11,7 +11,7 @@ using Kiddy.Common;
 
 namespace Kiddy.Controllers
 {
-    public class UsersController : BaseController 
+    public class UsersController : BaseController
     {
         KiddyEntities db = new KiddyEntities();
         BaseController bC = new BaseController();
@@ -21,7 +21,7 @@ namespace Kiddy.Controllers
             List<UserResponse> users = new List<UserResponse>();
             if (bC.validateToken(userToken.AccessToken, userToken.UserID))
             {
-                 users = db.Users.Select<User, UserResponse>(x => new UserResponse
+                users = db.Users.Select<User, UserResponse>(x => new UserResponse
                 {
                     ID = x.ID,
                     UserID = x.UserID,
@@ -31,8 +31,8 @@ namespace Kiddy.Controllers
                     CreatedOn = x.CreatedOn,
                     RowStatus = x.RowStatus
                 }).ToList();
-            }   
-            
+            }
+
             return users.AsQueryable();
         }
 
@@ -41,9 +41,9 @@ namespace Kiddy.Controllers
         {
             User resultUser = new User();
             resultUser = db.Users.Where(x => x.ID == user.ID).FirstOrDefault();
-            if(!bC.validateToken(user.userToken, user.UserLogin))
+            if (!bC.validateToken(user.userToken, user.UserLogin))
             {
-                return new UserResponse() { Message = "Validate Token Error" , statusCode = HttpStatusCode.Unauthorized};
+                return new UserResponse() { Message = "Validate Token Error", statusCode = HttpStatusCode.Unauthorized };
             }
 
             UserResponse userResponse = new UserResponse();
@@ -60,72 +60,29 @@ namespace Kiddy.Controllers
         public BaseResponse Post([FromBody]UsersRegister userRegister)
         {
             BaseResponse baseResponse = new BaseResponse();
-            if (!ModelState.IsValid)
+            List<User> checkUser = db.Users.Where(x => x.UserID == userRegister.UserID && x.RowStatus != true).ToList();
+            if (checkUser.Count() > 0)
             {
-                baseResponse.Message = "Model Not Valid";
-                baseResponse.statusCode = HttpStatusCode.BadRequest;
-                baseResponse.aknowledge = 0;
-                return baseResponse;
-            }
 
-            if (!bC.validateToken(userRegister.userToken, userRegister.UserLogin))
-            {
-                baseResponse.Message = "ERROR";
-                baseResponse.statusCode = HttpStatusCode.Unauthorized;
-                baseResponse.aknowledge = 0;
-                return baseResponse;
-            }
-            User user = new User();
-            user.password = Encryptor.Encrypt(userRegister.password);
-            user.UserID = userRegister.UserID;
-            user.Email = userRegister.Email;
-            user.CreatedBy = userRegister.UserLogin;
-            user.CreatedOn = DateTime.Now;
-            user.ModifiedBy = "";
-            user.ModifiedOn = new DateTime(1900, 1, 1);
+                if (!ModelState.IsValid)
+                {
+                    baseResponse.Message = "Model Not Valid";
+                    baseResponse.statusCode = HttpStatusCode.BadRequest;
+                    baseResponse.aknowledge = 0;
+                    return baseResponse;
+                }
 
-            var add = db.Users.Add(user);
+                User user = new User();
+                user.password = Encryptor.Encrypt(userRegister.password);
+                user.UserID = userRegister.UserID;
+                user.Email = userRegister.Email;
+                user.CreatedBy = "System";
+                user.CreatedOn = DateTime.Now;
+                user.ModifiedBy = "";
+                user.ModifiedOn = new DateTime(1900, 1, 1);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                baseResponse.Message = "ERROR when trying to save changes, Error : " + ex;
-                baseResponse.statusCode = HttpStatusCode.BadRequest;
-                baseResponse.aknowledge = 0;
-                return baseResponse;
-            }
+                var add = db.Users.Add(user);
 
-            baseResponse.Message = "Success";
-            baseResponse.statusCode = HttpStatusCode.OK;
-            baseResponse.aknowledge = 1;
-            return baseResponse;
-        }
-
-        // PUT: api/Users/5
-        public BaseResponse Put([FromBody]UserUpdate usersUpdate)
-        {
-            BaseResponse baseResponse = new BaseResponse();
-
-            if (!bC.validateToken(usersUpdate.userToken, usersUpdate.UserLogin))
-            {
-                baseResponse.Message = "ERROR";
-                baseResponse.statusCode = HttpStatusCode.Unauthorized;
-                baseResponse.aknowledge = 0;
-                return baseResponse;
-            }
-
-            var updateUser = db.Users.Where(x => x.ID == usersUpdate.ID).FirstOrDefault();
-            if(updateUser != null)
-            {
-                updateUser.UserID = usersUpdate.UserID;
-                updateUser.password = usersUpdate.password;
-                updateUser.Email = usersUpdate.Email;
-                updateUser.ModifiedBy = usersUpdate.UserLogin;
-                updateUser.ModifiedOn = DateTime.Now;
-                updateUser.RowStatus = usersUpdate.RowStatus;
                 try
                 {
                     db.SaveChanges();
@@ -137,20 +94,70 @@ namespace Kiddy.Controllers
                     baseResponse.aknowledge = 0;
                     return baseResponse;
                 }
-            }
-            else
-            {
-                baseResponse.Message = "ERROR";
-                baseResponse.statusCode = HttpStatusCode.BadRequest;
-                baseResponse.aknowledge = 0;
+
+                baseResponse.Message = "Success";
+                baseResponse.statusCode = HttpStatusCode.OK;
+                baseResponse.aknowledge = 1;
                 return baseResponse;
             }
-            
+            baseResponse.Message = "User Exist";
+            baseResponse.statusCode = HttpStatusCode.BadRequest;
+            baseResponse.aknowledge = 0;
+            return baseResponse;
+        }
 
+        // PUT: api/Users/5
+        public BaseResponse Put([FromBody]UserUpdate usersUpdate)
+        {
+            BaseResponse baseResponse = new BaseResponse();
+            List<User> checkUser = db.Users.Where(x => x.UserID == userRegister.UserID && x.RowStatus != true).ToList();
+            if (checkUser.Count() > 0)
+            {
+                if (!bC.validateToken(usersUpdate.userToken, usersUpdate.UserLogin))
+                {
+                    baseResponse.Message = "ERROR";
+                    baseResponse.statusCode = HttpStatusCode.Unauthorized;
+                    baseResponse.aknowledge = 0;
+                    return baseResponse;
+                }
 
-            baseResponse.Message = "Success";
-            baseResponse.statusCode = HttpStatusCode.OK;
-            baseResponse.aknowledge = 1;
+                var updateUser = db.Users.Where(x => x.ID == usersUpdate.ID).FirstOrDefault();
+                if (updateUser != null)
+                {
+                    updateUser.UserID = usersUpdate.UserID;
+                    updateUser.password = usersUpdate.password;
+                    updateUser.Email = usersUpdate.Email;
+                    updateUser.ModifiedBy = usersUpdate.UserLogin;
+                    updateUser.ModifiedOn = DateTime.Now;
+                    updateUser.RowStatus = usersUpdate.RowStatus;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        baseResponse.Message = "ERROR when trying to save changes, Error : " + ex;
+                        baseResponse.statusCode = HttpStatusCode.BadRequest;
+                        baseResponse.aknowledge = 0;
+                        return baseResponse;
+                    }
+                }
+                else
+                {
+                    baseResponse.Message = "ERROR";
+                    baseResponse.statusCode = HttpStatusCode.BadRequest;
+                    baseResponse.aknowledge = 0;
+                    return baseResponse;
+                }
+
+                baseResponse.Message = "Success";
+                baseResponse.statusCode = HttpStatusCode.OK;
+                baseResponse.aknowledge = 1;
+                return baseResponse;
+            }
+            baseResponse.Message = "User Exist";
+            baseResponse.statusCode = HttpStatusCode.BadRequest;
+            baseResponse.aknowledge = 0;
             return baseResponse;
         }
 

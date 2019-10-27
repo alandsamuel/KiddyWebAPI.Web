@@ -326,6 +326,24 @@
           "Kiddy.Web.dll": {}
         }
       },
+      "Flee/1.2.2": {
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard20/Flee.NetStandard20.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard20/Flee.NetStandard20.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {},
       "Microsoft.AspNetCore.DataProtection/2.2.0": {
         "dependencies": {
@@ -2221,6 +2239,9 @@
         }
       },
       "Kiddy.Common/1.0.0": {
+        "dependencies": {
+          "Flee": "1.2.2"
+        },
         "runtime": {
           "Kiddy.Common.dll": {}
         },
@@ -4015,6 +4036,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Flee/1.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BUMMkJttBph2/SAzGXXJvTjQ8VcuUZtdtTJtZipffN8zVBNqJdYkofd1Q9y3REnO++Id1LBqlSKjT0pqHmqc4A==",
+      "path": "flee/1.2.2",
+      "hashPath": "flee.1.2.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
       "type": "package",

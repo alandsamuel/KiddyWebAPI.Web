@@ -91,7 +91,8 @@ namespace Kiddy.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Privacy = "Privacy";
+            public readonly string Logout = "Logout";
+            public readonly string SignUp = "SignUp";
             public readonly string Error = "Error";
         }
 
@@ -99,7 +100,8 @@ namespace Kiddy.Web.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Privacy = "Privacy";
+            public const string Logout = "Logout";
+            public const string SignUp = "SignUp";
             public const string Error = "Error";
         }
 
@@ -111,11 +113,11 @@ namespace Kiddy.Web.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Index = "Index";
-                public readonly string Privacy = "Privacy";
+                public readonly string SignUp = "SignUp";
             }
 
             public readonly string Index = "~/Views/Home/Index.cshtml";
-            public readonly string Privacy = "~/Views/Home/Privacy.cshtml";
+            public readonly string SignUp = "~/Views/Home/SignUp.cshtml";
         }
 
         [GeneratedCode("R4Mvc", "1.0")]
@@ -142,12 +144,44 @@ namespace Kiddy.Web.Controllers
         }
 
         [NonAction]
-        partial void PrivacyOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo);
+        partial void IndexOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, Kiddy.Models.UsersLogin usersLogin);
         [NonAction]
-        public override Microsoft.AspNetCore.Mvc.IActionResult Privacy()
+        public override Microsoft.AspNetCore.Mvc.IActionResult Index(Kiddy.Models.UsersLogin usersLogin)
         {
-            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.Privacy);
-            PrivacyOverride(callInfo);
+            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "usersLogin", usersLogin);
+            IndexOverride(callInfo, usersLogin);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LogoutOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo);
+        [NonAction]
+        public override Microsoft.AspNetCore.Mvc.IActionResult Logout()
+        {
+            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.Logout);
+            LogoutOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SignUpOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo);
+        [NonAction]
+        public override Microsoft.AspNetCore.Mvc.IActionResult SignUp()
+        {
+            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.SignUp);
+            SignUpOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SignUpOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, Kiddy.Models.UsersRegister usersLogin);
+        [NonAction]
+        public override Microsoft.AspNetCore.Mvc.IActionResult SignUp(Kiddy.Models.UsersRegister usersLogin)
+        {
+            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.SignUp);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "usersLogin", usersLogin);
+            SignUpOverride(callInfo, usersLogin);
             return callInfo;
         }
 

@@ -1,11 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string token = ViewBag.data;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewData["Title"] - Kiddy.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="~/css/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+    <link href="~/css/layout.css" rel="stylesheet" />
+    <link href="~/css/CustomGrid.css" rel="stylesheet" />
+    <link href="~/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="~/css/skeleton.css" rel="stylesheet" />
+    <link href="~/css/base.css" rel="stylesheet" />
+    <link href="~/css/tables.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    </script>
 </head>
 <body>
     <header>
@@ -19,11 +34,21 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            @if (string.IsNullOrEmpty(token))
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                            @if (string.IsNullOrEmpty(token))
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">Sign Up</a>
+                            }
+                            </li>
                     </ul>
                 </div>
             </div>

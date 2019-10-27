@@ -35,7 +35,7 @@ namespace Kiddy.Models
         public int ID { get; set; }
     }
 
-    public class UsersRegister : Base.BaseRequest
+    public class UsersRegister
     {
         [Required]
         [RegularExpression(@"(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$")]

@@ -17,7 +17,9 @@ using R4Mvc;
 [GeneratedCode("R4Mvc", "1.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static readonly Kiddy.Web.Controllers.AdminController Admin = new Kiddy.Web.Controllers.R4MVC_AdminController();
     public static readonly Kiddy.Web.Controllers.HomeController Home = new Kiddy.Web.Controllers.R4MVC_HomeController();
+    public static readonly Kiddy.Web.Controllers.UserController User = new Kiddy.Web.Controllers.R4MVC_UserController();
     public static readonly R4Mvc.SharedController Shared = new R4Mvc.SharedController();
 }
 
@@ -73,7 +75,15 @@ public static partial class Links
         public const string UrlPath = "~/css";
         public static string Url() => R4MvcHelpers.ProcessVirtualPath(UrlPath);
         public static string Url(string fileName) => R4MvcHelpers.ProcessVirtualPath(UrlPath + "/" + fileName);
+        public static readonly string base_css = Url("base.css");
+        public static readonly string CustomGrid_css = Url("CustomGrid.css");
+        public static readonly string jquery_ui_1_9_2_custom_min_css = Url("jquery-ui-1.9.2.custom.min.css");
+        public static readonly string jquery_bxslider_css = Url("jquery.bxslider.css");
+        public static readonly string layout_css = Url("layout.css");
+        public static readonly string main_css = Url("main.css");
         public static readonly string site_css = Url("site.css");
+        public static readonly string skeleton_css = Url("skeleton.css");
+        public static readonly string tables_css = Url("tables.css");
     }
 
     public static partial class js

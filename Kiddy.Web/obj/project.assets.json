@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
+      "Flee/1.2.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard20/Flee.NetStandard20.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard20/Flee.NetStandard20.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
         "type": "package",
         "compile": {
@@ -1995,7 +2011,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -2009,7 +2025,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -2024,7 +2040,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -2830,6 +2846,9 @@
       "Kiddy.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Flee": "1.2.2"
+        },
         "compile": {
           "bin/placeholder/Kiddy.Common.dll": {}
         },
@@ -2840,6 +2859,19 @@
     }
   },
   "libraries": {
+    "Flee/1.2.2": {
+      "sha512": "BUMMkJttBph2/SAzGXXJvTjQ8VcuUZtdtTJtZipffN8zVBNqJdYkofd1Q9y3REnO++Id1LBqlSKjT0pqHmqc4A==",
+      "type": "package",
+      "path": "flee/1.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "flee.1.2.2.nupkg.sha512",
+        "flee.nuspec",
+        "lib/net45/Flee.Net45.dll",
+        "lib/netstandard20/Flee.NetStandard20.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
       "sha512": "GXmMD8/vuTLPLvKzKEPz/4vapC5e0cwx1tUVd83ePRyWF9CCrn/pg4/1I+tGkQqFLPvi3nlI2QtPtC6MQN8Nww==",
       "type": "package",

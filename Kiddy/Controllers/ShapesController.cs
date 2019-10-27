@@ -41,12 +41,15 @@ namespace Kiddy.Controllers
             Shape shape = new Shape();
             shape.shapeName = shapesRegister.shapeName;
             shape.CreatedBy = shapesRegister.UserLogin;
+            shape.needParameter = shapesRegister.needParameter;
             shape.Description = shapesRegister.Description;
             shape.Dimension = shapesRegister.Dimension;
             shape.CreatedOn = DateTime.Now;
             shape.ModifiedBy = "";
             shape.CreatedOn = new DateTime(1900, 01, 01);
             shape.RowStatus = false;
+
+            db.Shapes.Add(shape);
 
             try
             {
@@ -84,6 +87,7 @@ namespace Kiddy.Controllers
             {
                 updateShapes.shapeName = shapesUpdate.shapeName;
                 updateShapes.Description = shapesUpdate.Description;
+                updateShapes.needParameter = shapesUpdate.needParameter;
                 updateShapes.ModifiedOn = DateTime.Now;
                 updateShapes.ModifiedBy = shapesUpdate.UserLogin;
                 updateShapes.RowStatus = shapesUpdate.RowStatus;

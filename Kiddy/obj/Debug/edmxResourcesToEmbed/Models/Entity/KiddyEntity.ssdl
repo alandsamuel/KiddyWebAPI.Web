@@ -19,6 +19,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="shapeName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Dimension" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="needParameter" Type="int" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -65,6 +66,19 @@
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="RowStatus" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="UsersShapeDownload">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShapesID" Type="int" Nullable="false" />
+    <Property Name="UsersID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="RowStatus" Type="bit" Nullable="false" />
+  </EntityType>
   <Association Name="FK_UsersID_UsersInRoleUsersID">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="UsersInRole" Type="Self.UsersInRole" Multiplicity="*" />
@@ -95,6 +109,7 @@
     <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersInRole" EntityType="Self.UsersInRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersShapeDownload" EntityType="Self.UsersShapeDownload" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_UsersID_UsersInRoleUsersID" Association="Self.FK_UsersID_UsersInRoleUsersID">
       <End Role="Users" EntitySet="Users" />
       <End Role="UsersInRole" EntitySet="UsersInRole" />

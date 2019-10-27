@@ -47,15 +47,6 @@ namespace Kiddy.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual IActionResult Index(UsersLogin usersLogin)
         {
-            //string[] error = new string[] { };
-            //var action = "Login";
-            //if(ModelState.IsValid)
-            //{
-            //    WebAPi webAPi = new WebAPi();
-            //    var result = webAPi.webApi(action, usersLogin);
-
-            //}
-
             UserToken userToken = new UserToken();
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/Login");
@@ -81,19 +72,67 @@ namespace Kiddy.Web.Controllers
 
             if (userToken.AccessToken != null)
             {
-                var sessionTicket = Encryptor.Encrypt(userToken.AccessToken + "||" + userToken.UserID);
+                var sessionTicket = Encryptor.Encrypt(userToken.AccessToken + "|" + userToken.UserID);
                 HttpContext.Session.SetString("SessionTicket", sessionTicket);
             }
             return View();
         }
 
-        public virtual IActionResult Privacy()
+        public virtual IActionResult Logout()
         {
-            ViewBag.data = HttpContext.Session.GetString("SessionTicket");
+            HttpContext.Session.Clear();
+
             if (ViewBag.data == null)
             {
-                return View(MVC.Home.Error());
+                return View(MVC.Home.Index());
             }
+            return View();
+        }
+
+        public virtual IActionResult SignUp()
+        {
+            //var session = HttpContext.Session.GetString("SessionTicket");
+            //ViewBag.data = session;
+            //string[] decryptSession = (Encryptor.Decrypt(session)).Split('|');
+
+            //ViewBag.UserToken = decryptSession[0];
+            //ViewBag.UserToken = decryptSession[0];
+            //if (ViewBag.data == null)
+            //{
+            //    return View(MVC.Home.Error());
+            //}
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public virtual IActionResult SignUp(UsersRegister usersLogin)
+        {
+            BaseResponse userToken = new BaseResponse();
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/Users");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            var content = JsonConvert.SerializeObject(usersLogin);
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(content);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var result = streamReader.ReadToEnd();
+                userToken = (BaseResponse)js.Deserialize<BaseResponse>(result);
+            }
+            ViewBag.StatusCode = userToken.statusCode.ToString();
+            ViewBag.Message = userToken.Message;
             return View();
         }
 
