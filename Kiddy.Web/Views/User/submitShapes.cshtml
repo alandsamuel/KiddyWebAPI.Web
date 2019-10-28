@@ -1,7 +1,18 @@
-﻿
+﻿@using Kiddy.Models;
+@using System.Web;
+
+@model shapeSubmitResponse
+
 @{
-    Layout = null;
+    ViewData["Title"] = "Home Page";
+    string error = ViewBag.error ?? string.Empty;
+    int no = 0;
+    
+    
+    string statusCode = ViewBag.StatusCode ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
 }
+
 
 <!DOCTYPE html>
 
@@ -12,6 +23,87 @@
     <title>submitShapes</title>
 </head>
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <ul>
+                    <li><a href="@MVC.User.Index()">Shape List</a></li>
+                    <li><a href="@MVC.User.submitShapes()">Shape Areanator</a></li>
+                    <li><a href="@MVC.User.shapeSavedList()">Shape Saved List</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <br /><h2>Submit Shape</h2><br />
+                @if (Model == null)
+                {
+                    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p>Input your Number here (separate with ',' or space)</p>
+                        @Html.TextBoxFor(m => m.userInput, new { @placeholder = "Input your Number here (separate with ',' or space)" });
+
+                        <div class="login-btn">
+
+                            <a href="#" class="link-forgotPassword">Forgot Password</a>
+                            <input type="submit" name="red-submit" value="Submit" />
+
+                        </div>
+
+                        @Html.ValidationSummary(false, string.Empty, new { style = "color:red" });
+                    }
+                }
+                else
+                {
+
+                    <h1>Possible Shape List Area</h1>
+                    <table>
+                        <th>
+                        <td>NO</td>
+                        <td>Action</td>
+                        <td>Shape Name</td>
+                        <td>Dimansion</td>
+                        <td>Description</td>
+                        </th>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model.listShapes)
+                            {
+                                <tr>
+                                    <td>@no</td>
+                                    <td><a href="#">Save</a></td>
+                                    <td>@item.shapeName</td>
+                                    <td>@item.Dimension</td>
+                                    <td>@item.Description</td>
+                                </tr>
+                                @(no++);
+                            }
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>No Data To Be Displayed</td>
+                            </tr>
+                        }
+                    </table>
+
+                }
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
+
+
+<script>
+        if ('@error' != '')
+        {
+            confirm_dialog('@error', 'Error', '', null);
+        }
+        if('@statusCode' != @string.Empty){
+            alert(@message);
+        }
+
+
+</script>

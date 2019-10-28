@@ -74,6 +74,8 @@ namespace Kiddy.Models
     public class shapeSubmitResponse : BaseResponse
     {
         public List<shapeCalculateAreas> listShapes { get; set; }
+        public string userInput { get; set; }
+        
     }
 
     public class shapeCalculateAreas

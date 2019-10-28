@@ -16,7 +16,7 @@ namespace Kiddy.Controllers
         KiddyEntities db = new KiddyEntities();
         BaseController bC = new BaseController();
         // GET: api/Users
-        public IEnumerable<UserResponse> Get([FromBody]UserToken userToken)
+        public List<UserResponse> Get([FromBody]UserToken userToken)
         {
             List<UserResponse> users = new List<UserResponse>();
             if (bC.validateToken(userToken.AccessToken, userToken.UserID))
@@ -33,7 +33,7 @@ namespace Kiddy.Controllers
                 }).ToList();
             }
 
-            return users.AsQueryable();
+            return users;
         }
 
         // GET: api/Users/5

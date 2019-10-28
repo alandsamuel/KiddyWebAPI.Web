@@ -166,3 +166,4 @@ Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\User\shapeSavedList.
 Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\User\submitShapes.cshtml.g.cs
 Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Index.cshtml.g.cs
 Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Details.cshtml.g.cs
+Z:\Project\C#\Kiddy.Web\obj\Debug\netcoreapp3.0\Razor\Views\Admin\CreateAdmin.cshtml.g.cs

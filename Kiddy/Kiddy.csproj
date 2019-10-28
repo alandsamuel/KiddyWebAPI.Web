@@ -212,6 +212,9 @@
     <Compile Include="Models\Entity\User.cs">
       <DependentUpon>KiddyEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\UserSavedData.cs">
+      <DependentUpon>KiddyEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\UsersInRole.cs">
       <DependentUpon>KiddyEntity.tt</DependentUpon>
     </Compile>

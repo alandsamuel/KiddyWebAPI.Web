@@ -1,15 +1,70 @@
-﻿
+﻿@using Kiddy.Models;
+
+@model shapeSubmitResponse
 @{
-    Layout = null;
+    ViewData["Title"] = "Shape Saved List";
+    int no = 0;
+    
+    string error = ViewBag.error ?? string.Empty;
+    string statusCode = ViewBag.StatusCode ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
 }
 
-<!DOCTYPE html>
+<h1>Index</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>shapeSavedList</title>
-</head>
-<body>
-</body>
-</html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <ul>
+                <li><a href="@MVC.User.Index()">Shape List</a></li>
+                <li><a href="@MVC.User.submitShapes()">Shape Areanator</a></li>
+                <li><a href="@MVC.User.shapeSavedList()">Shape Saved List</a></li>
+            </ul>
+        </div>
+        <div class="col">
+            <table>
+                <th>
+                <td>NO</td>
+                <td>Shape Name</td>
+                <td>Dimansion</td>
+                <td>Description</td>
+                <td>Area</td>
+                </th>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.listShapes)
+                    {
+                        <tr>
+                            <td>@no</td>
+                            <td>@item.shapeName</td>
+                            <td>@item.Dimension</td>
+                            <td>@item.Description</td>
+                            <td>@item.Area</td>
+                        </tr>
+                        @(no++);
+                    }
+
+                }
+                else
+                {
+                    <tr>
+                        <td>No Data To Be Displayed</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        if ('@error' != '')
+        {
+            confirm_dialog('@error', 'Error', '', null);
+        }
+        if('@statusCode' != @string.Empty){
+            alert(@message);
+        }
+
+
+</script>

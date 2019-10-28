@@ -80,20 +80,6 @@ namespace Kiddy.Web.Controllers
             return RedirectToPagePermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("R4Mvc", "1.0"), DebuggerNonUserCode]
-        public virtual IActionResult Details()
-        {
-            return new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.Details);
-        }
-
-        [NonAction]
-        [GeneratedCode("R4Mvc", "1.0"), DebuggerNonUserCode]
-        public virtual IActionResult shapeSavedList()
-        {
-            return new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.shapeSavedList);
-        }
-
         [GeneratedCode("R4Mvc", "1.0"), DebuggerNonUserCode]
         public UserController Actions => MVC.User;
         [GeneratedCode("R4Mvc", "1.0")]
@@ -110,7 +96,6 @@ namespace Kiddy.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Details = "Details";
             public readonly string submitShapes = "submitShapes";
             public readonly string shapeSavedList = "shapeSavedList";
         }
@@ -119,7 +104,6 @@ namespace Kiddy.Web.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Details = "Details";
             public const string submitShapes = "submitShapes";
             public const string shapeSavedList = "shapeSavedList";
         }
@@ -165,17 +149,6 @@ namespace Kiddy.Web.Controllers
         }
 
         [NonAction]
-        partial void DetailsOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, int id);
-        [NonAction]
-        public override Microsoft.AspNetCore.Mvc.ActionResult Details(int id)
-        {
-            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.Details);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DetailsOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
         partial void submitShapesOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo);
         [NonAction]
         public override Microsoft.AspNetCore.Mvc.ActionResult submitShapes()
@@ -186,9 +159,9 @@ namespace Kiddy.Web.Controllers
         }
 
         [NonAction]
-        partial void submitShapesOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, Microsoft.AspNetCore.Http.IFormCollection collection);
+        partial void submitShapesOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, Kiddy.Models.shapeSubmitResponse collection);
         [NonAction]
-        public override Microsoft.AspNetCore.Mvc.ActionResult submitShapes(Microsoft.AspNetCore.Http.IFormCollection collection)
+        public override Microsoft.AspNetCore.Mvc.ActionResult submitShapes(Kiddy.Models.shapeSubmitResponse collection)
         {
             var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.submitShapes);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "collection", collection);
@@ -197,13 +170,12 @@ namespace Kiddy.Web.Controllers
         }
 
         [NonAction]
-        partial void shapeSavedListOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, int id);
+        partial void shapeSavedListOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo);
         [NonAction]
-        public override Microsoft.AspNetCore.Mvc.ActionResult shapeSavedList(int id)
+        public override Microsoft.AspNetCore.Mvc.ActionResult shapeSavedList()
         {
             var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.shapeSavedList);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            shapeSavedListOverride(callInfo, id);
+            shapeSavedListOverride(callInfo);
             return callInfo;
         }
     }

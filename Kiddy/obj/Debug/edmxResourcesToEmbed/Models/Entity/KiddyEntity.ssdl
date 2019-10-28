@@ -53,6 +53,32 @@
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="RowStatus" Type="bit" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Kiddy.dbo.UserSavedData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserSavedData">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="UsersID" />
+      <PropertyRef Name="ShapesID" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="userInput" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="RowStatus" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="UsersID" Type="int" Nullable="false" />
+    <Property Name="ShapesID" Type="int" Nullable="false" />
+    <Property Name="Area" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="userInput" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="RowStatus" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="UsersInRole">
     <Key>
       <PropertyRef Name="ID" />
@@ -110,6 +136,20 @@
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersInRole" EntityType="Self.UsersInRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersShapeDownload" EntityType="Self.UsersShapeDownload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSavedData" EntityType="Self.UserSavedData" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserSavedData].[ID] AS [ID], 
+    [UserSavedData].[UsersID] AS [UsersID], 
+    [UserSavedData].[ShapesID] AS [ShapesID], 
+    [UserSavedData].[Area] AS [Area], 
+    [UserSavedData].[userInput] AS [userInput], 
+    [UserSavedData].[CreatedBy] AS [CreatedBy], 
+    [UserSavedData].[CreatedOn] AS [CreatedOn], 
+    [UserSavedData].[ModifiedBy] AS [ModifiedBy], 
+    [UserSavedData].[ModifiedOn] AS [ModifiedOn], 
+    [UserSavedData].[RowStatus] AS [RowStatus]
+    FROM [dbo].[UserSavedData] AS [UserSavedData]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_UsersID_UsersInRoleUsersID" Association="Self.FK_UsersID_UsersInRoleUsersID">
       <End Role="Users" EntitySet="Users" />
       <End Role="UsersInRole" EntitySet="UsersInRole" />

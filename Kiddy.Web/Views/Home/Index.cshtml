@@ -6,31 +6,38 @@
 @{
     ViewData["Title"] = "Home Page";
     string error = ViewBag.error ?? string.Empty;
+    string statusCode = ViewBag.StatusCode ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
 }
 
-    <div class="div-login">
-        <br /><h2>Login</h2><br />
-        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.TextBoxFor(m => m.UserID, new { @placeholder = "Username" });
-            @Html.PasswordFor(m => m.password, new { @placeholder = "Password" });
+<div class="div-login">
+    <br /><h2>Login</h2><br />
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(m => m.UserID, new { @placeholder = "Username" });
+        @Html.PasswordFor(m => m.password, new { @placeholder = "Password" });
 
-            <div class="login-btn">
+        <div class="login-btn">
 
-                <a href="#" class="link-forgotPassword">Forgot Password</a>
-                <input type="submit" name="red-submit" value="Login" />
+            <a href="#" class="link-forgotPassword">Forgot Password</a>
+            <input type="submit" name="red-submit" value="Login" />
 
-            </div>
+        </div>
 
-            @Html.ValidationSummary(false, string.Empty, new { style = "color:red" });
-        }
+        @Html.ValidationSummary(false, string.Empty, new { style = "color:red" });
+    }
 
-    </div>
+</div>
 
-    <script>
+<script>
         if ('@error' != '')
         {
             confirm_dialog('@error', 'Error', '', null);
         }
-    </script>
+        if('@statusCode' != @string.Empty){
+            alert(@message);
+        }
+
+
+</script>

@@ -77,4 +77,18 @@ namespace Kiddy.Models
         public bool RowStatus { get; set; }
         public string Email { get; set; }
     }
+
+    public partial class UsersShapeSave
+    {
+        public int ID { get; set; }
+        public int ShapesID { get; set; }
+        public int UsersID { get; set; }
+        public string CreatedBy { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+    }
+
+    public partial class UsersShapeSaveResponse : BaseResponse
+    {
+        public List<UsersShapeSave> userSave { get; set; }
+    }
 }

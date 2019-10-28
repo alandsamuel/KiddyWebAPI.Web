@@ -46,6 +46,7 @@
       <End Role="UsersInRole" EntitySet="UsersInRoles" />
     </AssociationSet>
     <EntitySet Name="UsersShapeDownloads" EntityType="KiddyModel.UsersShapeDownload" />
+    <EntitySet Name="UserSavedDatas" EntityType="KiddyModel.UserSavedData" />
   </EntityContainer>
   <EntityType Name="Token">
     <Key>
@@ -118,6 +119,30 @@
     <Property Name="ShapesID" Type="Int32" Nullable="false" />
     <Property Name="UsersID" Type="Int32" Nullable="false" />
     <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RowStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSavedData">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="UsersID" />
+      <PropertyRef Name="ShapesID" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="userInput" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="RowStatus" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="UsersID" Type="Int32" Nullable="false" />
+    <Property Name="ShapesID" Type="Int32" Nullable="false" />
+    <Property Name="Area" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="userInput" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />

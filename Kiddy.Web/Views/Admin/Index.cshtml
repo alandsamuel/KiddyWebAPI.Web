@@ -1,15 +1,72 @@
-﻿
+﻿@using Kiddy.Models;
+
+@model UserResponse[]
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    int no = 0;
+
+    string error = ViewBag.error ?? string.Empty;
+    string statusCode = ViewBag.StatusCode ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
 }
 
-<!DOCTYPE html>
+<h1>Index</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-</body>
-</html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <ul>
+                <li><a href="@MVC.User.Index()">Shape List</a></li>
+                <li><a href="@MVC.Admin.Index()">User List</a></li>
+                <li><a href="@MVC.Admin.CreateAdmin()">Create User / Admin</a></li>
+            </ul>
+        </div>
+        <div class="col">
+            <table>
+                <th>
+                <td>NO</td>
+                <td>Action</td>
+                <td>User ID</td>
+                <td>Email</td>
+                <td>Created By</td>
+                <td>Created On</td>
+                </th>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@no</td>
+                            <td><a href="@MVC.Admin.Details(item.ID)">Edit</a> || <a href="#">Delete</a></td>
+                            <td>@item.UserID</td>
+                            <td>@item.Email</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@item.CreatedOn</td>
+                        </tr>
+                        @(no++);
+                    }
+
+                }
+                else
+                {
+                    <tr>
+                        <td>No Data To Be Displayed</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        if ('@error' != '')
+        {
+            confirm_dialog('@error', 'Error', '', null);
+        }
+        if('@statusCode' != @string.Empty){
+            alert(@message);
+        }
+
+
+</script>

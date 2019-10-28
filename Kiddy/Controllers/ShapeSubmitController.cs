@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Kiddy.Models.Entity;
 using Kiddy.Models;
+using Kiddy.Models.Base;
 using Kiddy.Common;
 
 
@@ -18,6 +19,16 @@ namespace Kiddy.Controllers
     public class ShapeSubmitController : BaseController
     {
         KiddyEntities db = new KiddyEntities();
+        public List<UsersShapeSave> GetusersShapeSaves([FromBody]BaseRequest request)
+        {
+            var userID = db.Users.Where(x => x.UserID == request.UserLogin && x.RowStatus != true).First();
+            var GetShapesID = db.UserSavedDatas.Where(x => x.UsersID == userID.ID && x.RowStatus != true).ToList();
+
+            List<UsersShapeSave> shapeSaves = new List<UsersShapeSave>();
+
+            return shapeSaves;
+        }
+
         // POST: api/ShapeSubmit
         public shapeSubmitResponse Post([FromBody]shapesSubmitRequest submit)
         {
@@ -36,7 +47,7 @@ namespace Kiddy.Controllers
 
                 foreach (var item in shapes)
                 {
-                    
+
                     shapeCalculateAreas areas = new shapeCalculateAreas();
 
                     //areas.Area = math.CalculateResult();

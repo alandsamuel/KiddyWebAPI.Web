@@ -13,6 +13,7 @@
         <AssociationConnector Association="KiddyModel.FK_UsersInRoleRoleID_RoleID" />
         <AssociationConnector Association="KiddyModel.FK_UsersID_UsersInRoleUsersID" />
         <EntityTypeShape EntityType="KiddyModel.UsersShapeDownload" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KiddyModel.UserSavedData" Width="1.5" PointX="7.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

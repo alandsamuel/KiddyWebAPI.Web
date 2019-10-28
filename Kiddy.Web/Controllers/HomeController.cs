@@ -75,7 +75,7 @@ namespace Kiddy.Web.Controllers
                 var sessionTicket = Encryptor.Encrypt(userToken.AccessToken + "|" + userToken.UserID);
                 HttpContext.Session.SetString("SessionTicket", sessionTicket);
             }
-            return View();
+            return RedirectToAction(MVC.User.Index());
         }
 
         public virtual IActionResult Logout()

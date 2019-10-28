@@ -1,6 +1,13 @@
-﻿
+﻿@using Kiddy.Models;
+
+@model ShapesForDisplay[]
 @{
     ViewData["Title"] = "Index";
+    int no = 0;
+    
+    string error = ViewBag.error ?? string.Empty;
+    string statusCode = ViewBag.StatusCode ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
 }
 
 <h1>Index</h1>
@@ -11,10 +18,51 @@
             <ul>
                 <li><a href="@MVC.User.Index()">Shape List</a></li>
                 <li><a href="@MVC.User.submitShapes()">Shape Areanator</a></li>
+                <li><a href="@MVC.User.shapeSavedList()">Shape Saved List</a></li>
             </ul>
         </div>
         <div class="col">
-            2 of 3 (wider)
+            <table>
+                <th>
+                <td>NO</td>
+                <td>Shape Name</td>
+                <td>Dimansion</td>
+                <td>Description</td>
+                </th>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@no</td>
+                            <td>@item.shapeName</td>
+                            <td>@item.Dimension</td>
+                            <td>@item.Description</td>
+                        </tr>
+                        @(no++);
+                    }
+
+                }
+                else
+                {
+                    <tr>
+                        <td>No Data To Be Displayed</td>
+                    </tr>
+                }
+            </table>
         </div>
     </div>
 </div>
+
+
+<script>
+        if ('@error' != '')
+        {
+            confirm_dialog('@error', 'Error', '', null);
+        }
+        if('@statusCode' != @string.Empty){
+            alert(@message);
+        }
+
+
+</script>

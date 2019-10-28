@@ -4,22 +4,66 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Kiddy.Common;
+using Kiddy.Models;
+using Kiddy.Models.Base;
+using Nancy.Json;
+using System.IO;
+using Newtonsoft.Json;
+using System.Net;
+using System.Text;
 
 namespace Kiddy.Web.Controllers
 {
     public partial class UserController : Controller
     {
+        
         // GET: User
         public virtual ActionResult Index()
         {
-            ViewBag.data = HttpContext.Session.GetString("SessionTicket");
-            return View();
-        }
+            var session = HttpContext.Session.GetString("SessionTicket");
+            ViewBag.data = session;
+            string[] decryptSession = (Encryptor.Decrypt(session)).Split('|');
 
-        // GET: User/Details/5
-        public virtual ActionResult Details(int id)
-        {
-            return View();
+            string userToken = decryptSession[0];
+            string userLogin = decryptSession[1];
+            ViewBag.UserToken = userToken;
+            ViewBag.UserLogin = userLogin;
+            if (ViewBag.data == null)
+            {
+                return View(MVC.Home.Logout());
+            }
+
+            UsersShapeSaveResponse saveShape = new UsersShapeSaveResponse();
+
+            BaseRequest Request = new BaseRequest();
+            Request.UserLogin = userLogin;
+            Request.userToken = userToken;
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/Shapes");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+
+            var content = JsonConvert.SerializeObject(Request);
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(content);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var result = streamReader.ReadToEnd();
+                saveShape.userSave = (List<UsersShapeSave>)js.Deserialize<List<UsersShapeSave>>(result);
+            }
+            ViewBag.StatusCode = saveShape.statusCode.ToString();
+            ViewBag.Message = saveShape.Message;
+
+            return View(saveShape.userSave);
         }
 
         // GET: User/Create
@@ -31,24 +75,114 @@ namespace Kiddy.Web.Controllers
         // POST: User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult submitShapes(IFormCollection collection)
+        public virtual ActionResult submitShapes(shapeSubmitResponse collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                var session = HttpContext.Session.GetString("SessionTicket");
+                ViewBag.data = session;
+                string[] decryptSession = (Encryptor.Decrypt(session)).Split('|');
 
-                return RedirectToAction(nameof(Index));
+                string userToken = decryptSession[0];
+                string userLogin = decryptSession[1];
+                ViewBag.UserToken = userToken;
+                ViewBag.UserLogin = userLogin;
+                if (ViewBag.data == null)
+                {
+                    return View(MVC.Home.Logout());
+                }
+
+                shapesSubmitRequest submitRequest = new shapesSubmitRequest();
+                submitRequest.UserInput = collection.userInput;
+                submitRequest.UserLogin = userLogin;
+                submitRequest.userToken = userToken;
+
+                shapeSubmitResponse shapeSubmit = new shapeSubmitResponse();
+
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/ShapeSubmit");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                var content = JsonConvert.SerializeObject(decryptSession);
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    streamWriter.Write(content);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var result = streamReader.ReadToEnd();
+                    shapeSubmit = (shapeSubmitResponse)js.Deserialize<shapeSubmitResponse>(result);
+                }
+                ViewBag.StatusCode = shapeSubmit.statusCode.ToString();
+                ViewBag.Message = shapeSubmit.Message;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+                return View(shapeSubmit);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
-            }
+                return View(new shapeSubmitResponse (){Message = "error processing requesterror processing request, error : " +ex});
+                }
         }
 
-        // GET: User/Edit/5
-        public virtual ActionResult shapeSavedList(int id)
+        
+        public virtual ActionResult shapeSavedList()
         {
-            return View();
+            try
+            {
+                var session = HttpContext.Session.GetString("SessionTicket");
+                ViewBag.data = session;
+                string[] decryptSession = (Encryptor.Decrypt(session)).Split('|');
+
+                string userToken = decryptSession[0];
+                string userLogin = decryptSession[1];
+                ViewBag.UserToken = userToken;
+                ViewBag.UserLogin = userLogin;
+                if (ViewBag.data == null)
+                {
+                    return View(MVC.Home.Logout());
+                }
+
+                BaseRequest Request = new BaseRequest();
+                Request.UserLogin = userLogin;
+                Request.userToken = userToken;
+
+                shapeSubmitResponse shapeSubmit = new shapeSubmitResponse();
+
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/ShapeSubmit");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
+
+                var content = JsonConvert.SerializeObject(decryptSession);
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    streamWriter.Write(content);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var result = streamReader.ReadToEnd();
+                    shapeSubmit = (shapeSubmitResponse)js.Deserialize<shapeSubmitResponse>(result);
+                }
+                ViewBag.StatusCode = shapeSubmit.statusCode.ToString();
+                ViewBag.Message = shapeSubmit.Message;
+
+                return View(shapeSubmit);
+            }
+            catch (Exception ex)
+            {
+                return View(new shapeSubmitResponse() { Message = "error processing request, error : " +ex});
+            }
         }
 
 

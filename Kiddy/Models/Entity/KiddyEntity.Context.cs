@@ -31,5 +31,6 @@ namespace Kiddy.Models.Entity
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UsersInRole> UsersInRoles { get; set; }
         public virtual DbSet<UsersShapeDownload> UsersShapeDownloads { get; set; }
+        public virtual DbSet<UserSavedData> UserSavedDatas { get; set; }
     }
 }
