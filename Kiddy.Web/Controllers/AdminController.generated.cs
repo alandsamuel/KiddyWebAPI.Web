@@ -87,6 +87,13 @@ namespace Kiddy.Web.Controllers
             return new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.Details);
         }
 
+        [NonAction]
+        [GeneratedCode("R4Mvc", "1.0"), DebuggerNonUserCode]
+        public virtual IActionResult DeleteAdmin()
+        {
+            return new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.DeleteAdmin);
+        }
+
         [GeneratedCode("R4Mvc", "1.0"), DebuggerNonUserCode]
         public AdminController Actions => MVC.Admin;
         [GeneratedCode("R4Mvc", "1.0")]
@@ -104,6 +111,7 @@ namespace Kiddy.Web.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Details = "Details";
+            public readonly string DeleteAdmin = "DeleteAdmin";
             public readonly string CreateAdmin = "CreateAdmin";
         }
 
@@ -112,6 +120,7 @@ namespace Kiddy.Web.Controllers
         {
             public const string Index = "Index";
             public const string Details = "Details";
+            public const string DeleteAdmin = "DeleteAdmin";
             public const string CreateAdmin = "CreateAdmin";
         }
 
@@ -167,6 +176,17 @@ namespace Kiddy.Web.Controllers
         }
 
         [NonAction]
+        partial void DeleteAdminOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, int id);
+        [NonAction]
+        public override Microsoft.AspNetCore.Mvc.ActionResult DeleteAdmin(int id)
+        {
+            var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.DeleteAdmin);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteAdminOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void CreateAdminOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo);
         [NonAction]
         public override Microsoft.AspNetCore.Mvc.ActionResult CreateAdmin()
@@ -177,13 +197,13 @@ namespace Kiddy.Web.Controllers
         }
 
         [NonAction]
-        partial void CreateAdminOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, Microsoft.AspNetCore.Http.IFormCollection collection);
+        partial void CreateAdminOverride(R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult callInfo, Kiddy.Models.UsersRegister usersLogin);
         [NonAction]
-        public override Microsoft.AspNetCore.Mvc.ActionResult CreateAdmin(Microsoft.AspNetCore.Http.IFormCollection collection)
+        public override Microsoft.AspNetCore.Mvc.ActionResult CreateAdmin(Kiddy.Models.UsersRegister usersLogin)
         {
             var callInfo = new R4Mvc_Microsoft_AspNetCore_Mvc_ActionResult(Area, Name, ActionNames.CreateAdmin);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "collection", collection);
-            CreateAdminOverride(callInfo, collection);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "usersLogin", usersLogin);
+            CreateAdminOverride(callInfo, usersLogin);
             return callInfo;
         }
     }

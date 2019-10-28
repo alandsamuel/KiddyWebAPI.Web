@@ -51,7 +51,7 @@ namespace Kiddy.Models
         public bool RowStatus { get; set; }
     }
 
-    public class ShapesForDisplay
+    public class ShapesForDisplay : BaseResponse
     {
         public string shapeName { get; set; }
         public string Dimension { get; set; }

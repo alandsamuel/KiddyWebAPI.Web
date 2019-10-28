@@ -114,6 +114,7 @@ namespace Kiddy.Web.Controllers
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/Users");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
+            usersLogin.isAdmin = 0;
 
             var content = JsonConvert.SerializeObject(usersLogin);
 

@@ -48,6 +48,8 @@ namespace Kiddy.Models
         [Required]
         [RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$")]
         public string Email { get; set; }
+        [Required]
+        public int isAdmin { get; set; }
     }
 
     public class UserUpdate : Base.BaseRequest

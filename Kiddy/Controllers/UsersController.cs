@@ -63,29 +63,44 @@ namespace Kiddy.Controllers
             List<User> checkUser = db.Users.Where(x => x.UserID == userRegister.UserID && x.RowStatus != true).ToList();
             if (checkUser.Count() > 0)
             {
-
-                if (!ModelState.IsValid)
-                {
-                    baseResponse.Message = "Model Not Valid";
-                    baseResponse.statusCode = HttpStatusCode.BadRequest;
-                    baseResponse.aknowledge = 0;
-                    return baseResponse;
-                }
-
-                User user = new User();
-                user.password = Encryptor.Encrypt(userRegister.password);
-                user.UserID = userRegister.UserID;
-                user.Email = userRegister.Email;
-                user.CreatedBy = "System";
-                user.CreatedOn = DateTime.Now;
-                user.ModifiedBy = "";
-                user.ModifiedOn = new DateTime(1900, 1, 1);
-
-                var add = db.Users.Add(user);
-
                 try
                 {
+                    if (!ModelState.IsValid)
+                    {
+                        baseResponse.Message = "Model Not Valid";
+                        baseResponse.statusCode = HttpStatusCode.BadRequest;
+                        baseResponse.aknowledge = 0;
+                        return baseResponse;
+                    }
+
+                    User user = new User();
+                    user.password = Encryptor.Encrypt(userRegister.password);
+                    user.UserID = userRegister.UserID;
+                    user.Email = userRegister.Email;
+                    user.CreatedBy = "System";
+                    user.CreatedOn = DateTime.Now;
+                    user.ModifiedBy = "";
+                    user.ModifiedOn = new DateTime(1900, 1, 1);
+
+                    var add = db.Users.Add(user);
+
+                    
                     db.SaveChanges();
+
+                    UsersInRole uir = new UsersInRole();
+                    uir.UsersID = db.Users.Where(x => x.UserID == userRegister.UserID).FirstOrDefault().ID;
+                    if (userRegister.isAdmin == 1)
+                    {
+                        uir.RoleID = db.Roles.Where(x => x.Role1 == "Admin").FirstOrDefault().ID;
+                    }
+                    else
+                    {
+                        uir.RoleID = db.Roles.Where(x => x.Role1 == "User").FirstOrDefault().ID;
+                    }
+                    uir.CreatedBy = "System";
+                    uir.CreatedOn = DateTime.Now;
+                    db.SaveChanges();
+
                 }
                 catch (Exception ex)
                 {

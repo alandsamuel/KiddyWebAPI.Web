@@ -1,6 +1,7 @@
 Z:\Project\C#\Kiddy\bin\Kiddy.dll.config
 Z:\Project\C#\Kiddy\bin\Kiddy.dll
 Z:\Project\C#\Kiddy\bin\Kiddy.pdb
+Z:\Project\C#\Kiddy\bin\XmlDocument.xml
 Z:\Project\C#\Kiddy\bin\roslyn\csc.exe
 Z:\Project\C#\Kiddy\bin\roslyn\csc.exe.config
 Z:\Project\C#\Kiddy\bin\roslyn\csc.rsp
@@ -50,6 +51,7 @@ Z:\Project\C#\Kiddy\bin\roslyn\VBCSCompiler.exe.config
 Z:\Project\C#\Kiddy\bin\Antlr3.Runtime.dll
 Z:\Project\C#\Kiddy\bin\EntityFramework.dll
 Z:\Project\C#\Kiddy\bin\EntityFramework.SqlServer.dll
+Z:\Project\C#\Kiddy\bin\Flee.Net45.dll
 Z:\Project\C#\Kiddy\bin\Kiddy.Common.dll
 Z:\Project\C#\Kiddy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 Z:\Project\C#\Kiddy\bin\Microsoft.Web.Infrastructure.dll
@@ -85,5 +87,3 @@ Z:\Project\C#\Kiddy\obj\Debug\Kiddy.csprojAssemblyReference.cache
 Z:\Project\C#\Kiddy\obj\Debug\Kiddy.csproj.CopyComplete
 Z:\Project\C#\Kiddy\obj\Debug\Kiddy.dll
 Z:\Project\C#\Kiddy\obj\Debug\Kiddy.pdb
-Z:\Project\C#\Kiddy\bin\XmlDocument.xml
-Z:\Project\C#\Kiddy\bin\Flee.Net45.dll

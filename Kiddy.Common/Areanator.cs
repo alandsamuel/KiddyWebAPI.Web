@@ -8,23 +8,47 @@ namespace Kiddy.Common
 {
     public class Areanator
     {
+        public double sumArea(string dimension, string userParameter)
+        {
 
-        //public int Area(string dimension, int num1, int num2)
-        //{
-        //    ExpressionContext context = new ExpressionContext();
+            List<int> num = new List<int>();
+            if (!string.IsNullOrEmpty(userParameter))
+            {
+                string[] splitUser = userParameter.Split('|');
 
-        //    context.Variables()
-        //    //int Result = 0;
-        //    //switch (shapeName)
-        //    //{
-        //    //    case "Triangle":
-        //    //        Result = (num1 * num2) / 2;
-        //    //        break;
-        //    //    default:
-        //    //        break;
-        //    //}
-        //    //return 0;
-        //}
+                foreach (var item in splitUser)
+                {
+                    num.Add(Convert.ToInt32(item));
+                }
+            }
+
+            Double result = 0;
+            // Define the context of our expression
+            ExpressionContext context = new ExpressionContext();
+            // Allow the expression to use all static public methods of System.Math
+            context.Imports.AddType(typeof(Math));
+
+
+            context.Variables["a"] = num[0];
+            context.Variables["b"] = num[1];
+            if (num[2] != default(int))
+            {
+                context.Variables["h"] = num[2];
+            }
+
+            IGenericExpression<double> eGeneric = context.CompileGeneric<double>(dimension);
+            try
+            {
+                result = eGeneric.Evaluate();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return result;
+        }
 
         //public int Area(string shapeName, int num1, int num2, int num3)
         //{

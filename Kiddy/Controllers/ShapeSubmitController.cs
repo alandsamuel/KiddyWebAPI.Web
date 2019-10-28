@@ -49,11 +49,13 @@ namespace Kiddy.Controllers
                 {
 
                     shapeCalculateAreas areas = new shapeCalculateAreas();
+                    Areanator calculate = new Areanator();
 
-                    //areas.Area = math.CalculateResult();
+                    areas.Area = calculate.sumArea(item.Dimension, submit.UserInput);
                     areas.shapeName = item.shapeName;
                     areas.Description = item.Description;
                     areas.Dimension = item.Dimension;
+                    
 
                     response.listShapes.Add(areas);
                 }
