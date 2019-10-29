@@ -8,7 +8,7 @@ jobs:
      
    steps:
      - checkout
-     - find .
+     - run: find .
      - run:
          name: Restore packages
          command:
