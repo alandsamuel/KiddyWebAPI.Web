@@ -1,0 +1,21 @@
+version: 2.0
+
+jobs:
+ build:
+   docker:
+     - image: mcr.microsoft.com/dotnet/core/sdk:3.0
+     - image: mcr.microsoft.com/dotnet/core/aspnet:3.0
+     - image: mcr.microsoft.com/dotnet/framework/sdk
+     
+   steps:
+     - checkout
+     - run: find .
+     - run:
+         name: Restore packages
+         command:
+           dotnet restore ./Kiddy.Web/Kiddy.Web.csproj
+     - run:
+         name: Build App
+         command:
+           dotnet build ./Kiddy.Web/Kiddy.Web.csproj /p:VisualStudioVersion=12.0 
+
