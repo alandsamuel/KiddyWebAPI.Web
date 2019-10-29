@@ -49,7 +49,29 @@ namespace Kiddy.Controllers
                             return loginResponse;
                         }
                     }
-                    #region generateToken
+
+                    //int isRole = Convert.ToInt32(db.Database.SqlQuery<int>(" SELECT CAST( CASE WHEN r.Role = 'Admin' THEN 1 ELSE 0 END AS bit) as isAdmin from Users u join UsersInRole uir on uir.UsersID = u.ID join Role r on r.ID = uir.RoleID").ToString());
+                    var query =
+                       from us in db.Users
+                       join uir in db.UsersInRoles
+                       on us.ID equals uir.UsersID
+                       join ro in db.Roles
+                       on uir.RoleID equals ro.ID
+                       select new
+                       {
+                           role = ro.Role1
+                       };
+
+                    if (query.FirstOrDefault().role == "Admin")
+                    {
+                        loginResponse.isAdmin = 1;
+                    }
+                    else
+                    {
+                        loginResponse.isAdmin = 0;
+                    }
+
+                       #region generateToken
                     byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                     byte[] key = Guid.NewGuid().ToByteArray();
                     string accessToken = Encryptor.Encrypt(Convert.ToBase64String(time.Concat(key).ToArray()));
@@ -64,6 +86,7 @@ namespace Kiddy.Controllers
                     loginResponse.AccessToken = accessToken;
                     loginResponse.UserID = user.UserID;
                     loginResponse.UserIDID = user.ID;
+                    
                     #endregion
 
                     db.Tokens.Add(tokenData);
@@ -72,12 +95,8 @@ namespace Kiddy.Controllers
                     loginResponse.aknowledge = 1;
                     loginResponse.Message = "Login succefull";
                     loginResponse.statusCode = HttpStatusCode.OK;
+                    
                 }
-
-                db.SaveChanges();
-                loginResponse.aknowledge = 1;
-                loginResponse.Message = "Login succefull";
-                loginResponse.statusCode = HttpStatusCode.OK;
                 #endregion
             }
             else

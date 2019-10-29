@@ -47,7 +47,7 @@ namespace Kiddy.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual IActionResult Index(UsersLogin usersLogin)
         {
-            UserToken userToken = new UserToken();
+            LoginResponse userToken = new LoginResponse();
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/Login");
             httpWebRequest.ContentType = "application/json";
@@ -67,7 +67,7 @@ namespace Kiddy.Web.Controllers
             {
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 var result = streamReader.ReadToEnd();
-                userToken = (UserToken)js.Deserialize<UserToken>(result);
+                userToken = (LoginResponse)js.Deserialize<LoginResponse>(result);
             }
 
             if (userToken.AccessToken != null)
@@ -75,7 +75,15 @@ namespace Kiddy.Web.Controllers
                 var sessionTicket = Encryptor.Encrypt(userToken.AccessToken + "|" + userToken.UserID);
                 HttpContext.Session.SetString("SessionTicket", sessionTicket);
             }
-            return RedirectToAction(MVC.User.Index());
+            if (userToken.isAdmin == 1)
+            {
+                return RedirectToAction(MVC.Admin.Index());
+            }
+            else
+            {
+                return RedirectToAction(MVC.User.Index());
+            }
+            
         }
 
         public virtual IActionResult Logout()

@@ -10,5 +10,6 @@ namespace Kiddy.Models
         public string AccessToken { get; set; }
         public int UserIDID { get; set; }
         public string UserID { get; set; }
+        public int isAdmin { get; set; }
     }
 }

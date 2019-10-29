@@ -19,6 +19,20 @@ namespace Kiddy.Models
     //    public bool RowStatus { get; set; }
     //}
 
+    public partial class ShapeModel : BaseResponse
+    {
+        public int ID { get; set; }
+        public string shapeName { get; set; }
+        public string Dimension { get; set; }
+        public string Description { get; set; }
+        public string CreatedBy { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public bool RowStatus { get; set; }
+        public int needParameter { get; set; }
+    }
+
     public class ShapesResponse : BaseResponse
     {
         public string shapeName { get; set; }

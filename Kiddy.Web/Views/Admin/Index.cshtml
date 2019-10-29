@@ -16,9 +16,9 @@
     <div class="row">
         <div class="col-3">
             <ul>
-                <li><a href="@MVC.User.Index()">Shape List</a></li>
-                <li><a href="@MVC.Admin.Index()">User List</a></li>
-                <li><a href="@MVC.Admin.CreateAdmin()">Create User / Admin</a></li>
+                <li><a mvc-action="MVC.User.Index()">Shape List</a></li>
+                <li><a mvc-action="MVC.Admin.Index()">User List</a></li>
+                <li><a mvc-action="MVC.Admin.CreateAdmin()">Create User / Admin</a></li>
             </ul>
         </div>
         <div class="col">
@@ -37,7 +37,7 @@
                     {
                         <tr>
                             <td>@no</td>
-                            <td><a href="@MVC.Admin.Details(item.ID)">Edit</a> || <a href="#">Delete</a></td>
+                            <td><a mvc-action="MVC.Admin.Details(item.ID)">Edit</a> || <a href="#">Delete</a></td>
                             <td>@item.UserID</td>
                             <td>@item.Email</td>
                             <td>@item.CreatedBy</td>

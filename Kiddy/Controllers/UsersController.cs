@@ -84,7 +84,6 @@ namespace Kiddy.Controllers
 
                     var add = db.Users.Add(user);
 
-                    
                     db.SaveChanges();
 
                     UsersInRole uir = new UsersInRole();

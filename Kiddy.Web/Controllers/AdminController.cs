@@ -106,7 +106,6 @@ namespace Kiddy.Web.Controllers
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "GET";
 
-            
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {

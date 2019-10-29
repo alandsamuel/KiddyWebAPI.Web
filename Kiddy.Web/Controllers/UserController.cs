@@ -34,36 +34,29 @@ namespace Kiddy.Web.Controllers
                 return View(MVC.Home.Logout());
             }
 
-            UsersShapeSaveResponse saveShape = new UsersShapeSaveResponse();
+            List<ShapesForDisplay> saveShape = new List<ShapesForDisplay>();
 
             BaseRequest Request = new BaseRequest();
             Request.UserLogin = userLogin;
             Request.userToken = userToken;
 
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/Shapes");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51150/api/GetShapes?AccessToken=" + userToken + "&UserID=" + userLogin);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "GET";
 
             var content = JsonConvert.SerializeObject(Request);
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                streamWriter.Write(content);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
 
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 var result = streamReader.ReadToEnd();
-                saveShape.userSave = (List<UsersShapeSave>)js.Deserialize<List<UsersShapeSave>>(result);
+                saveShape = (List<ShapesForDisplay>)js.Deserialize<List<ShapesForDisplay>>(result);
             }
-            ViewBag.StatusCode = saveShape.statusCode.ToString();
-            ViewBag.Message = saveShape.Message;
+            //ViewBag.StatusCode = saveShape.statusCode.ToString();
+            //ViewBag.Message = saveShape.Message;
 
-            return View(saveShape.userSave);
+            return View(saveShape);
         }
 
         // GET: User/Create
