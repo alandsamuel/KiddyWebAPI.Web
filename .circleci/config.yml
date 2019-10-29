@@ -1,14 +1,4 @@
 version: 2.0
-jobs:
-  build:
-    docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.0
-    steps:
-      - checkout
-      - run: find .
-      - run: dotnet restore 
-      - run: dotnet build 
-      
 
 jobs:
  build:
@@ -18,10 +8,7 @@ jobs:
      
    steps:
      - checkout
-     - run: 
-         name : Check File
-         command:
-         find .
+     - find .
      - run:
          name: Restore packages
          command:
