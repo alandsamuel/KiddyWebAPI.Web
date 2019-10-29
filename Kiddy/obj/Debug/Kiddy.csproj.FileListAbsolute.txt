@@ -1,4 +1,3 @@
-Z:\Project\C#\Kiddy\bin\Kiddy.dll.config
 Z:\Project\C#\Kiddy\bin\Kiddy.dll
 Z:\Project\C#\Kiddy\bin\Kiddy.pdb
 Z:\Project\C#\Kiddy\bin\XmlDocument.xml

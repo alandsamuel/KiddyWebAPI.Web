@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Index";
     int no = 0;
-    
+
     string error = ViewBag.error ?? string.Empty;
     string statusCode = ViewBag.StatusCode ?? string.Empty;
     string message = ViewBag.Message ?? string.Empty;
@@ -16,40 +16,44 @@
     <div class="row">
         <div class="col-3">
             <ul>
-                
+
                 <li><a mvc-action="MVC.User.Index()">Dinner Details</a>
                 <li><a mvc-action="MVC.User.submitShapes()">Shape Areanator</a></li>
                 <li><a mvc-action="MVC.User.shapeSavedList()">Shape Saved List</a></li>
             </ul>
         </div>
         <div class="col">
-            <table>
-                <th>
-                <td>NO</td>
-                <td>Shape Name</td>
-                <td>Dimansion</td>
-                <td>Description</td>
-                </th>
-                @if (Model != null)
-                {
-                    @foreach (var item in Model)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>Shape Name</th>
+                        <th>Dimansion</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@no</td>
+                                <td>@item.shapeName</td>
+                                <td>@item.Dimension</td>
+                                <td>@item.Description</td>
+                            </tr>
+                            @(no++);
+                        }
+
+                    }
+                    else
                     {
                         <tr>
-                            <td>@no</td>
-                            <td>@item.shapeName</td>
-                            <td>@item.Dimension</td>
-                            <td>@item.Description</td>
+                            <td>No Data To Be Displayed</td>
                         </tr>
-                        @(no++);
                     }
-
-                }
-                else
-                {
-                    <tr>
-                        <td>No Data To Be Displayed</td>
-                    </tr>
-                }
+                </tbody>
             </table>
         </div>
     </div>

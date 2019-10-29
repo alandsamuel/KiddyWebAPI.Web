@@ -22,37 +22,41 @@
             </ul>
         </div>
         <div class="col">
-            <table>
-                <th>
-                <td>NO</td>
-                <td>Action</td>
-                <td>User ID</td>
-                <td>Email</td>
-                <td>Created By</td>
-                <td>Created On</td>
-                </th>
-                @if (Model != null)
-                {
-                    @foreach (var item in Model)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>Action</th>
+                        <th>User ID</th>
+                        <th>Email</th>
+                        <th>Created By</th>
+                        <th>Created On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@no</td>
+                                <td><a mvc-action="MVC.Admin.Details(item.ID)">Edit</a> || <a href="#">Delete</a></td>
+                                <td>@item.UserID</td>
+                                <td>@item.Email</td>
+                                <td>@item.CreatedBy</td>
+                                <td>@item.CreatedOn</td>
+                            </tr>
+                            @(no++);
+                        }
+
+                    }
+                    else
                     {
                         <tr>
-                            <td>@no</td>
-                            <td><a mvc-action="MVC.Admin.Details(item.ID)">Edit</a> || <a href="#">Delete</a></td>
-                            <td>@item.UserID</td>
-                            <td>@item.Email</td>
-                            <td>@item.CreatedBy</td>
-                            <td>@item.CreatedOn</td>
+                            <td>No Data To Be Displayed</td>
                         </tr>
-                        @(no++);
                     }
-
-                }
-                else
-                {
-                    <tr>
-                        <td>No Data To Be Displayed</td>
-                    </tr>
-                }
+                </tbody>
             </table>
         </div>
     </div>

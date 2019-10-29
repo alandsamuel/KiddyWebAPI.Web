@@ -22,14 +22,16 @@
             </ul>
         </div>
         <div class="col">
-            <table>
-                <th>
-                <td>NO</td>
-                <td>Shape Name</td>
-                <td>Dimansion</td>
-                <td>Description</td>
-                <td>Area</td>
-                </th>
+            <table class="d-table">
+                <thead>
+                <tr>
+                <th>NO</th>
+                <th>Shape Name</th>
+                <th>Dimansion</th>
+                <th>Description</th>
+                <th>Area</th>
+                </tr>
+                </thead>
                 @if (Model != null)
                 {
                     @foreach (var item in Model.listShapes)

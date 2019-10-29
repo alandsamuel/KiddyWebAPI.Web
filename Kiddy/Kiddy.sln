@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiddy.Tests", "..\Kiddy.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kiddy.Common", "..\Kiddy.Common\Kiddy.Common.csproj", "{36DC51DE-0CAE-48BA-BA50-B981B4EF72BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiddy.Web", "..\Kiddy.Web\Kiddy.Web.csproj", "{338F0406-9333-455C-846E-2FF73A5FBCAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kiddy.Web", "..\Kiddy.Web\Kiddy.Web.csproj", "{338F0406-9333-455C-846E-2FF73A5FBCAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{C0B52CDC-61EF-4B6D-A8D0-8C5AEA5AB961}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Program Files\Microsoft SQL Server\MSSQL15.TIWA\MSSQL\DATA\Kiddy.mdf = C:\Program Files\Microsoft SQL Server\MSSQL15.TIWA\MSSQL\DATA\Kiddy.mdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

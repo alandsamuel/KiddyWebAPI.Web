@@ -11,7 +11,7 @@
 }
 
 <div class="div-login">
-    <br /><h2>Login</h2><br />
+    <br /><h1>Login</h1><br />
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
         @Html.AntiForgeryToken()
@@ -20,9 +20,8 @@
 
         <div class="login-btn">
 
-            <a href="#" class="link-forgotPassword">Forgot Password</a>
-            <a mvc-action="MVC.Home.SignUp()">Dinner Details</a>
-            <input type="submit" name="red-submit" value="Login" />
+            <p><b><a href="#" class="link-forgotPassword">Forgot Password</a> <a mvc-action="MVC.Home.SignUp()" >Sign Up</a><br /></b></p>
+            <center><input type="submit" name="red-submit" class="btn btn-danger" value="Login" /></center>
 
         </div>
 

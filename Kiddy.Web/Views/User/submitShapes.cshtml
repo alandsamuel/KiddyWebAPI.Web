@@ -7,8 +7,8 @@
     ViewData["Title"] = "Home Page";
     string error = ViewBag.error ?? string.Empty;
     int no = 0;
-    
-    
+
+
     string statusCode = ViewBag.StatusCode ?? string.Empty;
     string message = ViewBag.Message ?? string.Empty;
 }
@@ -45,7 +45,7 @@
                         <div class="login-btn">
 
                             <a href="#" class="link-forgotPassword">Forgot Password</a>
-                            <input type="submit" name="red-submit" value="Submit" />
+                            <input type="submit" name="red-submit" class="btn btn-danger" value="Submit" />
 
                         </div>
 
@@ -56,35 +56,39 @@
                 {
 
                     <h1>Possible Shape List Area</h1>
-                    <table>
-                        <th>
-                        <td>NO</td>
-                        <td>Action</td>
-                        <td>Shape Name</td>
-                        <td>Dimansion</td>
-                        <td>Description</td>
-                        </th>
-                        @if (Model != null)
-                        {
-                            @foreach (var item in Model.listShapes)
+                    <table class="d-table">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>Action</th>
+                                <th>Shape Name</th>
+                                <th>Dimansion</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var item in Model.listShapes)
+                                {
+                                    <tr>
+                                        <td>@no</td>
+                                        <td><a href="#">Save</a></td>
+                                        <td>@item.shapeName</td>
+                                        <td>@item.Dimension</td>
+                                        <td>@item.Description</td>
+                                    </tr>
+                                    @(no++);
+                                }
+
+                            }
+                            else
                             {
                                 <tr>
-                                    <td>@no</td>
-                                    <td><a href="#">Save</a></td>
-                                    <td>@item.shapeName</td>
-                                    <td>@item.Dimension</td>
-                                    <td>@item.Description</td>
+                                    <td>No Data To Be Displayed</td>
                                 </tr>
-                                @(no++);
                             }
-
-                        }
-                        else
-                        {
-                            <tr>
-                                <td>No Data To Be Displayed</td>
-                            </tr>
-                        }
+                        </tbody>
                     </table>
 
                 }

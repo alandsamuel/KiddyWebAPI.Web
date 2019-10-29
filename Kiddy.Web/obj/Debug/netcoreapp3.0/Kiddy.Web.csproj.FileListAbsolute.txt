@@ -124,7 +124,6 @@ Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\System.Web.WebPages.Razor.dll
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\System.Web.Razor.dll
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\System.Web.WebPages.Deployment.dll
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\Kiddy.pdb
-Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\Kiddy.dll.config
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\Kiddy.Common.pdb
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\System.Web.Optimization.xml
 Z:\Project\C#\Kiddy.Web\bin\Debug\netcoreapp3.0\System.Web.Mvc.xml
