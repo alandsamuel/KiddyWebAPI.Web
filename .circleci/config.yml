@@ -6,5 +6,4 @@ jobs:
     steps:
       - checkout
       - run: find .
-      - run: dotnet restore
       - run: dotnet build
