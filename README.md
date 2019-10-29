@@ -3,6 +3,10 @@ Kiddy WebAPI and Website for content Management
 
 Made With :
 
+[DotNetCore] - DotNet Core 3.0
+
+[.net Framework] - DotNet Framework 4.7
+
 [Flee](https://archive.codeplex.com/?p=flee) - Fast Lightweight Expression Evaluator
 A .NET expression parser and evaluator that uses a custom compiler and lightweight codegen to ensure that expression evaluation is fast and efficient.
 
