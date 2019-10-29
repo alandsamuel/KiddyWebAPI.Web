@@ -5,6 +5,7 @@ jobs:
    docker:
      - image: mcr.microsoft.com/dotnet/core/sdk:3.0
      - image: mcr.microsoft.com/dotnet/core/aspnet:3.0
+     - image: mcr.microsoft.com/dotnet/framework/sdk:4.8
      
    steps:
      - checkout
