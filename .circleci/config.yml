@@ -6,4 +6,5 @@ jobs:
     steps:
       - checkout
       - run: find .
-      - run: dotnet build
+      - run: dotnet restore ./Kiddy.Web/Kiddy.Web.csproj
+      - run: dotnet build ./Kiddy.Web/Kiddy.Web.csproj
