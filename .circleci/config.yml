@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run: find .
       - run: dotnet restore ./Kiddy.Web/Kiddy.Web.csproj
-      - run: dotnet build ./Kiddy.Web/Kiddy.Web.csproj
+      - run: dotnet build ./Kiddy.Web/Kiddy.Web.csproj /p:VisualStudioVersion=12.0 
